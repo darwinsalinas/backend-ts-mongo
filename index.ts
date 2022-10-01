@@ -1,14 +1,10 @@
-import express, { Express, Request, Response, NextFunction } from 'express';
+import express, { Express } from 'express';
 
-const app = express();
+import { appRouter } from './router';
 
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
-    res.json({ 'message': 'hola mundo' });
-});
+const app: Express = express();
 
-app.get('/hola', (req, res, next) => {
-    res.json({ 'message': 'hola' });
-});
+appRouter(app);
 
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
